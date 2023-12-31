@@ -1,0 +1,645 @@
+:root {
+  --color1: #c7ffed;
+  --color2: #d8ffdb;
+  --color3: #008f8c;
+  --color4: #015958;
+  --color5: #023535;
+  --color6: #012121;
+  --color7: #333;
+  --time: 2s cubic-bezier(0.88, 0.89, 0.49, 1.14);
+}
+
+body {
+  height: 100%;
+  margin: 0px;
+  background-color: var(--color3);
+  font-family: Inter, sans-serif;
+}
+
+.contenedor {
+  width: 100%;
+  max-width: 1440px;
+  margin: auto;
+}
+
+.main {
+  min-height: 80vh;
+}
+
+.header {
+  position: relative;
+}
+
+.header > svg {
+  position: absolute;
+  left: 84px;
+  top: 40px;
+  width: 31.09px;
+  height: 48px;
+  z-index: 2;
+  animation: rotacion var(--time);
+}
+
+.modo {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 84px;
+  top: 40px;
+  z-index: 2;
+  font-family: Inter, sans-serif;
+  font-size: 10px;
+  color: var(--color1);
+}
+
+.modo > input {
+  margin-left: 10px;
+  width: 35px;
+  height: 35px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.37);
+  border-radius: 50%;
+  transform: scale(1);
+  transition: transform 0.2s;
+}
+
+.modo > input:hover {
+  transform: scale(1.05);
+}
+
+@keyframes rotacion {
+  0% {
+    left: -40px;
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+  100% {
+    left: 84px;
+    opacity: 1;
+    transform: rotate(360deg);
+  }
+}
+
+/*# AGREGANDO LOS NOMBRES DE ESTAS CLASES DEJO DE MOSTRARLOS */
+.gameOver-nodisplay,
+.youWin-nodisplay,
+.no-display {
+  display: none;
+}
+
+.juego {
+  padding-top: 0px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ahorcado {
+  width: 300px;
+}
+
+.correctas {
+  margin-top: 20px;
+  display: flex;
+  color: var(--color1);
+  font-size: 50px;
+}
+
+.letraCorrecta {
+  height: 50px;
+  width: 40px;
+  padding: 10px 10px;
+  margin: 0px 10px;
+  border-bottom: 8px solid var(--color4);
+  text-align: center;
+}
+
+.teclado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.tecla {
+  font-family: Inter, sans-serif;
+  padding: 5px 20px;
+  background-color: var(--color4);
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0px 2px 0px var(--color5);
+  margin: 2px;
+  color: var(--color1);
+  transform: scale(1);
+  transition: transform 0.2s;
+}
+
+.tecla:hover {
+  transform: scale(1.05);
+}
+
+.tecla:active {
+  background-color: var(--color5);
+}
+
+.teclaUsadaCorrecta {
+  font-family: Inter, sans-serif;
+  padding: 5px 20px;
+  border: none;
+  background-color: var(--color3);
+  box-shadow: 0px 0px 2px var(--color6);
+  border-radius: 3px;
+  margin: 2px;
+  color: var(--color1);
+}
+
+.teclaUsadaIncorrecta {
+  font-family: Inter, sans-serif;
+  padding: 5px 20px;
+  background-color: var(--color5);
+  border: none;
+  border-radius: 3px;
+  margin: 2px;
+  color: var(--color1);
+}
+
+form {
+  display: flex;
+}
+
+.btn {
+  height: 50px;
+  border: 1px solid var(--color4);
+  border-radius: 24px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  transform: scale(1);
+  transition: transform 0.2s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn-primary {
+  background-color: var(--color4);
+  color: var(--color1);
+}
+
+.btn-primary:active {
+  background-color: var(--color5);
+}
+
+.btn-secondary {
+  background-color: var(--color1);
+  color: var(--color5);
+}
+
+.btn-secondary:active {
+  color: var(--color1);
+  background-color: var(--color5);
+}
+
+.btns_juego {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.menu {
+  height: 100%;
+}
+
+.btns_menu {
+  padding: 20% 20% 0% 20%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.btns_menu > #start {
+  width: 300px;
+  height: 90px;
+  margin-bottom: 12px;
+}
+
+#multijugador {
+  height: 70px;
+  width: 250px;
+}
+
+.btns_menu > .btn:last-child {
+  height: 60px;
+  width: 200px;
+  margin-top: 12px;
+}
+
+.stateAnimation {
+  font-family: "Press Start 2P", cursive;
+  font-size: 100px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: slide 0.5s, parpadeo 1s 0.5s infinite alternate;
+}
+
+.youWin {
+  background: -webkit-linear-gradient(#ff0000, #ffff00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
+  top: 40%;
+}
+
+.gameOver {
+  background: -webkit-linear-gradient(var(--color4), var(--color1));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: rgb(255, 255, 255);
+  top: 40%; /* Ajusta la posición vertical */
+}
+
+@keyframes slide {
+  0% {
+    top: -800px;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes parpadeo {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .correctas {
+    font-size: 40px;
+  }
+  .letraCorrecta {
+    height: 40px;
+    width: 30px;
+    padding: 5px 5px;
+  }
+  .teclado {
+    margin-top: 20px;
+  }
+  .btns_juego > .btn:last-child,
+  .btns_juego > .btn:first-child {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .juego {
+    padding-top: 80px;
+  }
+  .ahorcado {
+    width: 200px;
+  }
+  .correctas {
+    font-size: 30px;
+  }
+  .letraCorrecta {
+    height: 30px;
+    width: 20px;
+    padding: 5px 5px;
+    margin: 0px 5px;
+  }
+  .tecla {
+    padding: 5px 10px;
+  }
+  .teclaUsadaIncorrecta {
+    padding: 5px 10px;
+  }
+  .teclaUsadaCorrecta {
+    padding: 5px 10px;
+  }
+  .btns_menu {
+    padding: 30% 20% 0 20%;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  @keyframes rotacion {
+    0% {
+      left: -40px;
+      opacity: 0;
+      transform: rotate(0deg);
+    }
+    100% {
+      left: 40px;
+      opacity: 1;
+      transform: rotate(360deg);
+    }
+  }
+  .modo {
+    right: 40px;
+  }
+  .btns_menu {
+    padding: 40% 20% 0 20%;
+  }
+
+  .btns_juego > .btn:last-child,
+  .btns_juego > .btn:first-child {
+    width: 120px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .btns_menu > .btn:first-child {
+    width: 200px;
+    height: 70px;
+  }
+  .btns_menu > .btn:last-child {
+    width: 150px;
+    height: 50px;
+  }
+  .juego {
+    padding-top: 80px;
+  }
+  .ahorcado {
+    width: 150px;
+  }
+  .correctas {
+    font-size: 25px;
+  }
+  .letraCorrecta {
+    height: 25px;
+    width: 15px;
+    padding: 2px 2px;
+    margin: 0px 5px;
+  }
+  .tecla {
+    padding: 5px 5px;
+  }
+  .teclaUsadaIncorrecta {
+    padding: 5px 5px;
+  }
+  .teclaUsadaCorrecta {
+    padding: 5px 5px;
+  }
+  .stateAnimation {
+    font-size: 70px;
+  }
+}
+
+/*# LOGO DEL AHORCADO */
+#logo {
+  width: 90px;
+  height: 90px;
+  margin-left: -30px;
+  margin-top: -20px;
+}
+
+/*# BOTON PAUSA */
+#pausa {
+  position: absolute;
+  left: 55px;
+  top: -5px;
+  z-index: 2;
+}
+
+/*# CONTADOR */
+#clock {
+  position: relative;
+  width: 53px;
+  height: 53px;
+  border: 8px solid var(--color7);
+  border-radius: 50%;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  line-height: 100px;
+  color: #333;
+  user-select: none;
+  margin-top: -54px;
+}
+
+#countdown {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 39px;
+  font-weight: bold;
+  background: var(--color7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  z-index: 1;
+}
+
+.blink {
+  animation: blink 1s infinite;
+}
+
+.blink2 {
+  animation: blink2 1s 0.5s infinite alternate;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes blink2 {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/*# Fondo cuando pongo pausa */
+#fondoOscuro {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.852);
+  z-index: 3;
+}
+
+#fondoOscuro2 {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.852);
+  z-index: 3;
+}
+
+#new,
+#des {
+  z-index: 4;
+  width: 300px;
+  height: 60px;
+  margin: 10px 0;
+  width: 300px;
+  margin-bottom: 12px;
+}
+
+#facil,
+#medio,
+#dificil {
+  z-index: 5;
+  width: 300px;
+  height: 60px;
+  margin: 10px 0;
+  width: 300px;
+  margin-bottom: 12px;
+}
+
+/*# CATEGORIA */
+#categoria {
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  color: var(--color1);
+  background-color: var(--color4);
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: center;
+  width: fit-content;
+  margin: auto;
+  margin-bottom: 5px;
+}
+
+/*# TEXTO PAUSA */
+#pausaLetra {
+  font-family: "Press Start 2P", cursive;
+  color: var(--color1);
+  font-size: 45px;
+  text-align: center;
+}
+
+#difultadLetra {
+  font-family: "Press Start 2P", cursive;
+  color: var(--color1);
+  font-size: 35px;
+  text-align: center;
+}
+
+/*# PUNTUACION */
+#puntuacion {
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  color: var(--color1);
+  background-color: var(--color4);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  width: fit-content;
+  margin-left: 132px;
+  margin-top: 40px;
+}
+
+#puntuacionTexto {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+#puntuacionValor {
+  font-weight: bold;
+  color: var(--color7);
+}
+
+/*# NIVEL */
+#nivel {
+  font-family: Inter, sans-serif;
+  font-size: 20px;
+  color: var(--color1);
+  background-color: var(--color4);
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  width: fit-content;
+  margin-top: -40px;
+  float: right;
+  margin-right: 170px;
+}
+
+#nivelTexto {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+#nivelValor {
+  font-weight: bold;
+  color: var(--color7);
+}
+
+/*# */
+#tablaEstadisticas {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.648);
+  z-index: 10;
+}
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+  max-width: 600px;
+  background-color: #f8f9fa;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.852);
+  border-radius: 5px;
+  margin: auto;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%); /* Centro vertical */
+}
+
+th,
+td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+th {
+  background-color: var(--color6);
+  color: white;
+}
+
+tr:hover {
+  background-color: #e2e6ea;
+}

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <script>
+      window.audio = new Audio("./audio/audio-principal.mp3");
+      audio.loop = true;
+      audio.volume = 0.75;
+      audio.play();
+    </script>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="./img/logo.svg" type="image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/estilos.css" />
+    <title>Juego del ahorcado</title>
+  </head>
+
+  <body>
+    <div id="tablaEstadisticas" style="display: none">
+      <table>
+        <thead>
+          <tr>
+            <th>Categoría</th>
+            <th>Valor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Letras Acertadas</td>
+            <td id="letrasAcertadas">0</td>
+          </tr>
+          <tr>
+            <td>Letras Incorrectas</td>
+            <td id="letrasIncorrectas">0</td>
+          </tr>
+          <tr>
+            <td>Presición</td>
+            <td id="presicion">0%</td>
+          </tr>
+          <tr>
+            <td>Puntuación</td>
+            <td id="puntuacionEst">0</td>
+          </tr>
+          <tr>
+            <td>Puntos Ganados</td>
+            <td id="puntosGanados">0</td>
+          </tr>
+          <tr>
+            <td>Puntos Perdidos</td>
+            <td id="puntosPerdidos">0</td>
+          </tr>
+          <tr>
+            <td>Duración de la partida</td>
+            <td id="tiempoDuracion">0 segundos</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="fondoOscuro" style="display: none">
+      <form class="btns_juego">
+        <p id="pausaLetra">PAUSA</p>
+        <input
+          id="new"
+          class="btn btn-primary"
+          type="button"
+          value="Nuevo Juego"
+        />
+        <input
+          id="des"
+          class="btn btn-secondary"
+          type="button"
+          value="Abandonar"
+        />
+      </form>
+    </div>
+    <div id="fondoOscuro2" style="display: none">
+      <form class="btns_juego">
+        <p id="difultadLetra">Dificultad</p>
+        <input id="facil" class="btn btn-primary" type="button" value="Fácil" />
+        <input id="medio" class="btn btn-primary" type="button" value="Medio" />
+        <input
+          id="dificil"
+          class="btn btn-primary"
+          type="button"
+          value="Difícil"
+        />
+      </form>
+    </div>
+
+    <header>
+      <div class="contenedor">
+        <div class="header">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="250"
+            height="250"
+            viewBox="0 0 200 200"
+            fill="none"
+            stroke="#fbfbfe"
+            stroke-width="10"
+            id="logo"
+            class=""
+          >
+            <!-- Base -->
+            <line x1="20" y1="180" x2="180" y2="180" />
+            <line x1="70" y1="180" x2="70" y2="20" />
+            <line x1="70" y1="25" x2="140" y2="25" />
+            <line x1="140" y1="20" x2="140" y2="40" />
+            <!-- Cabeza -->
+            <circle cx="140" cy="60" r="20" />
+            <!-- Cuerpo -->
+            <line x1="140" y1="80" x2="140" y2="120" />
+            <!-- Brazos -->
+            <line x1="140" y1="90" x2="120" y2="100" />
+            <line x1="140" y1="90" x2="160" y2="100" />
+            <!-- Piernas -->
+            <line x1="140" y1="120" x2="120" y2="140" />
+            <line x1="140" y1="120" x2="160" y2="140" />
+          </svg>
+
+          <div class="no-display" id="pausa">
+            <input
+              id="pausasvg"
+              type="image"
+              src="./img/icono pausa/pausa.svg"
+              style="
+                width: 80px;
+                height: 50px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                fill: #b2ffed;
+              "
+            />
+          </div>
+
+          <div class="no-display" id="puntuacion">
+            <span id="puntuacionTexto">Puntuación: </span>
+            <span id="puntuacionValor"></span>
+          </div>
+          <div class="no-display" id="nivel">
+            <span id="nivelTexto">Nivel: </span>
+            <span id="nivelValor"></span>
+          </div>
+
+          <div class="modo">
+            <p id="text_modo">Modo Oscuro</p>
+            <input
+              id="modo"
+              type="image"
+              src="./img/moon.png"
+              alt="Logo de Modalidad"
+            />
+            <div class="no-display" id="clock">
+              <div id="countdown"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="contenedor main">
+        <div id="menu" class="menu">
+          <form class="btns_menu">
+            <input
+              id="start"
+              class="btn btn-primary"
+              type="button"
+              value="Empezar Juego"
+            />
+            <input
+              id="multijugador"
+              class="btn btn-secondary"
+              type="button"
+              value="Multijugador"
+            />
+          </form>
+        </div>
+        <div id="juego" class="no-display">
+          <div class="state-nodisplay"></div>
+          <canvas class="ahorcado" width="355" height="354"></canvas>
+          <div id="categoria"></div>
+          <audio id="audioPista" class="no-display" controls>
+            <source src="./audio/win.mp3" type="audio/mp3" />
+          </audio>
+          <div class="correctas"></div>
+          <div class="incorrectas"></div>
+          <div class="teclado">
+            <div class="fila1"></div>
+            <div class="fila2"></div>
+            <div class="fila3"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <script src="./js/ahorcado.js"></script>
+</html>
